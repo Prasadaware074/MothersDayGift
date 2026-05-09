@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="आईसाठी प्रेमाने सजवलेले भावनिक स्क्रॅपबुक." />
+  <title>आई, ही भेटवस्तू फक्त तुझ्यासाठीच आहे.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600&family=Kalam:wght@300;400;700&family=Tiro+Devanagari+Marathi:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <canvas id="fallingCanvas" aria-hidden="true"></canvas>
+
+  <!-- Autoplay blocked असल्यास दिसणारा संगीत overlay -->
+  <div id="musicGate" class="music-gate hidden" role="dialog" aria-modal="true" aria-label="संगीत सुरू करण्यासाठी स्पर्श करा">
+    <div class="music-gate-card">
+      <p class="music-gate-title">मातृदिनाच्या हार्दिक शुभेच्छा आई</p>
+      <button id="startMusicBtn" class="primary-btn">एक छोटासा स्पर्श… आणि आठवणींचा प्रवास सुरू❤️</button>
+    </div>
+  </div>
+
+  <!-- Background music -->
+  <audio id="bgMusic" loop preload="auto">
+    <!-- Preferred filename -->
+    <source src="assets/music/mothers-day-song.mp3" type="audio/mpeg" />
+    <!-- Fallback for files exported with double extension -->
+    <source src="assets/music/mothers-day-song.mp3.mpeg" type="audio/mpeg" />
+  </audio>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero section-block" id="hero">
+      <div class="particles" id="heroParticles" aria-hidden="true"></div>
+      <div class="hero-bg-blur" aria-hidden="true"></div>
+      <div class="hero-content reveal">
+        <p class="hero-tag">आई, तुझ्यासाठी...</p>
+        <h1>तुझ्या मायेच्या उबेतच माझं जग फुलतं</h1>
+        <p class="hero-sub">
+          प्रत्येक आठवण, प्रत्येक शब्द, आणि प्रत्येक श्वासात तुझं प्रेम आहे.
+          आजची ही भावनांची छोटी वही फक्त तुझ्यासाठी.
+        </p>
+      </div>
+    </section>
+
+    <!-- Scrapbook Section -->
+    <section class="scrapbook section-block" id="memories">
+      <div class="section-heading reveal">
+        <p class="section-kicker">आठवणींची पाने</p>
+        <h2>आपल्या छोट्या क्षणांची मोठी कहाणी</h2>
+      </div>
+
+      <div class="memory-grid">
+        <article class="polaroid reveal" style="--tilt: -3deg">
+          <div class="tape"></div>
+          <img src="assets/images/memory-1.jpg" alt="आईसोबतचा आनंदी क्षण" />
+          <p class="caption">"तुझ्या हसण्यात माझं धैर्य दडलंय."</p>
+        </article>
+
+        <article class="polaroid reveal" style="--tilt: 2deg">
+          <div class="tape"></div>
+          <img src="assets/images/memory-2.jpg" alt="कौटुंबिक प्रेमाचा फोटो" />
+          <p class="caption">"तुझ्या मिठीत घराचा खरा अर्थ सापडला."</p>
+        </article>
+
+        <article class="polaroid reveal" style="--tilt: -1deg">
+          <div class="tape"></div>
+          <img src="assets/images/memory-3.jpg" alt="आईच्या प्रेमळ नजरेचा क्षण" />
+          <p class="caption">"तू असलीस की प्रत्येक भीती लहान वाटते."</p>
+        </article>
+
+        <article class="polaroid reveal" style="--tilt: 3deg">
+          <div class="tape"></div>
+          <img src="assets/images/memory-4.jpg" alt="आईसोबत आठवणीतला दिवस" />
+          <p class="caption">"तुझ्या हातचं जेवण म्हणजे बालपणाचा सुगंध."</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Emotional Letter Section -->
+    <section class="letter section-block" id="letter">
+      <div class="paper reveal">
+        <h2>प्रिय आई,</h2>
+        <p class="typed-line" data-text="तुझ्या नजरेत नेहमी माझ्यासाठी प्रार्थना असते..."></p>
+        <p class="typed-line" data-text="माझ्या प्रत्येक यशामागे तुझा निःशब्द त्याग असतो..."></p>
+        <p class="typed-line" data-text="आणि माझ्या प्रत्येक अश्रूत तुझ्या मायेचा हात असतो..."></p>
+        <p>
+          मला शब्दांत सांगता येत नाही, पण तुझ्यामुळेच मी मी आहे.
+          तू माझी शक्ती आहेस, शांतता आहेस, आणि देवाने दिलेली सर्वात सुंदर भेट आहेस.
+        </p>
+        <p class="letter-sign">तुझं लेकरू, प्रेमाने.</p>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery section-block" id="gallery">
+      <div class="section-heading reveal">
+        <p class="section-kicker">आई</p>
+        <h2>प्रेमाच्या क्षणांचा प्रवास</h2>
+      </div>
+
+      <div class="carousel reveal" aria-label="फोटो स्लायडर">
+        <div class="carousel-track" id="carouselTrack">
+          <figure class="slide"><img src="assets/images/gallery-1.jpg" alt="आईसोबत आनंदी क्षण १" /></figure>
+          <figure class="slide"><img src="assets/images/gallery-2.jpg" alt="आईसोबत आनंदी क्षण २" /></figure>
+          <figure class="slide"><img src="assets/images/gallery-3.jpg" alt="आईसोबत आनंदी क्षण ३" /></figure>
+          <figure class="slide"><img src="assets/images/gallery-4.jpg" alt="आईसोबत आनंदी क्षण ४" /></figure>
+        </div>
+        <div class="carousel-controls">
+          <button id="prevSlide" aria-label="मागील फोटो">मागे</button>
+          <button id="nextSlide" aria-label="पुढील फोटो">पुढे</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote/Emotion Section -->
+    <section class="emotion section-block" id="emotion">
+      <div class="particles" id="quoteParticles" aria-hidden="true"></div>
+      <div class="emotion-card reveal">
+        <p class="quote">
+          "आई,
+          तुझ्या प्रेमामुळेच मी आज इथपर्यंत पोहोचलो आहे...
+          मी कितीही मोठा झालो तरी,
+          तुझ्यासाठी नेहमी तुझं छोटंसं मूलच राहीन ❤️"
+        </p>
+        <div class="pulse-heart" aria-hidden="true">❤</div>
+      </div>
+    </section>
+
+    <!-- Ending Section -->
+    <section class="ending section-block" id="ending">
+      <div class="ending-content reveal">
+        <p class="ending-kicker">आई, आज आणि सदैव</p>
+        <h2>तुझ्या मायेच्या सावलीतच माझं आयुष्य पूर्ण आहे</h2>
+        <div class="ending-heart" aria-hidden="true">❤</div>
+        <p class="final-line">आई, माझ्या आयुष्यातल्या प्रत्येक सुंदर क्षणाचं कारण म्हणजे तू.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
